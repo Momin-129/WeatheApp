@@ -1,8 +1,15 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
 .weather {
   border: 2px solid black;
   border-radius: 5px;
   padding: 2vh 2vw;
-  /* display: none; */
   justify-content: center;
 }
 

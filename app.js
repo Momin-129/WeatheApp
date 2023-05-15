@@ -22,15 +22,15 @@ function showWeather() {
     .then((response) => response.json())
     .then((data) => {
       if (data.name == undefined) {
-        City.textContent = `Invalid City Name`;
+        City.textContent = data.message;
         temperature.textContent = ``;
         humidity.textContent = ``;
         wind.textContent = ``;
       } else {
         City.textContent = `${data.name}`;
-        temperature.textContent = `${data.main.temp}`;
-        humidity.textContent = `${data.main.humidity}`;
-        wind.textContent = `${data.wind.speed}`;
+        temperature.textContent = `${data.main.temp} °`;
+        humidity.textContent = `${data.main.humidity} %`;
+        wind.textContent = `${data.wind.speed} m/s`;
       }
     });
 
