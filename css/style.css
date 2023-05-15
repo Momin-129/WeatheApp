@@ -1,36 +1,22 @@
-html {
-  height: 100%;
+.main {
+  border: 3px solid black;
+  border-radius: 15px;
+  background-color: #3399ff;
 }
 
-body {
-  height: 100%;
-}
-
-.weather {
+#weather {
   border: 2px solid black;
   border-radius: 5px;
-  padding: 2vh 2vw;
-  justify-content: center;
+  background-color: white;
 }
 
-.weather table {
-  width: 50%;
-  align-self: center;
+#weather .title {
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
 }
 
-.weather th,
-td {
-  width: 40%;
-}
-
-.weather th {
-  text-align: left;
-}
-
-.weather td {
-  text-align: left;
-}
-
-.searchBar #search {
-  width: 100%;
+#weather span {
+  font-size: 18px;
+  color: rebeccapurple;
 }

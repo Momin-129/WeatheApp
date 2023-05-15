@@ -1,7 +1,8 @@
 function showWeather() {
   let city = "";
-  if (document.getElementById("search").value.length != 0) {
-    city = document.getElementById("search").value;
+
+  if (document.getElementById("Search").value.length != 0) {
+    city = document.getElementById("Search").value;
   } else city = "Jammu";
 
   let api_key = "6c0387614d2116469f8a6bfac2817576";
@@ -11,7 +12,7 @@ function showWeather() {
   let City = document.getElementById("city");
   let humidity = document.getElementById("humidity");
   let temperature = document.getElementById("temperature");
-  let wind = document.getElementById("wind");
+  let wind = document.getElementById("windSpeed");
 
   const promise = new Promise((resolve, reject) => {
     const weather = fetch(url);
@@ -33,8 +34,6 @@ function showWeather() {
         wind.textContent = `${data.wind.speed} m/s`;
       }
     });
-
-  document.getElementById("weather").style.display = "flex";
 }
 
 window.onload = showWeather();
