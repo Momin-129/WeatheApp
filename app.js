@@ -4,12 +4,9 @@ function showWeather() {
     city = document.getElementById("search").value;
   } else city = "Jammu";
 
-  // let city = document.getElementById("search").value;
-  // if (city == "") city = "Jammu";
+  let api_key = "6c0387614d2116469f8a6bfac2817576";
 
-  alert(city);
-
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=6c0387614d2116469f8a6bfac2817576&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`;
 
   let City = document.getElementById("city");
   let humidity = document.getElementById("humidity");
@@ -24,10 +21,17 @@ function showWeather() {
   promise
     .then((response) => response.json())
     .then((data) => {
-      City.textContent = `${data.name}`;
-      temperature.textContent = `${data.main.temp}`;
-      humidity.textContent = `${data.main.humidity}`;
-      wind.textContent = `${data.wind.speed}`;
+      if (data.name == undefined) {
+        City.textContent = `Invalid City Name`;
+        temperature.textContent = ``;
+        humidity.textContent = ``;
+        wind.textContent = ``;
+      } else {
+        City.textContent = `${data.name}`;
+        temperature.textContent = `${data.main.temp}`;
+        humidity.textContent = `${data.main.humidity}`;
+        wind.textContent = `${data.wind.speed}`;
+      }
     });
 
   document.getElementById("weather").style.display = "flex";
