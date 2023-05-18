@@ -14,26 +14,24 @@ function showWeather() {
   let temperature = document.getElementById("temperature");
   let wind = document.getElementById("windSpeed");
 
-  const promise = new Promise((resolve, reject) => {
-    const weather = fetch(url);
-    resolve(weather);
+  async function FetchWeather() {
+    const fetchData = await fetch(url);
+    const weather = await fetchData.json();
+    return weather;
+  }
+
+  FetchWeather().then((data) => {
+    if (data.name == undefined) {
+      City.textContent = data.message;
+      temperature.textContent = ``;
+      humidity.textContent = ``;
+      wind.textContent = ``;
+    } else {
+      City.textContent = `${data.name}`;
+      temperature.textContent = `${data.main.temp} °`;
+      humidity.textContent = `${data.main.humidity} %`;
+      wind.textContent = `${data.wind.speed} m/s`;
+    }
   });
-
-  promise
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.name == undefined) {
-        City.textContent = data.message;
-        temperature.textContent = ``;
-        humidity.textContent = ``;
-        wind.textContent = ``;
-      } else {
-        City.textContent = `${data.name}`;
-        temperature.textContent = `${data.main.temp} °`;
-        humidity.textContent = `${data.main.humidity} %`;
-        wind.textContent = `${data.wind.speed} m/s`;
-      }
-    });
 }
-
 window.onload = showWeather();
